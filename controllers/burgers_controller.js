@@ -20,3 +20,15 @@ router.post("/api/burger", function (req, res) {
             res.json({ id: result.insertId });
         });
 });
+
+router.use("/api/burger/:id", function (req, res){
+        var condition = "id = " + req.params.id;
+        console.log("condition" , condition)
+
+        burger.update(
+            {devoured: req.body.devoured, condition} , function(result){
+            console.log("Burger was Updated")
+        });
+});
+
+module.exports = router;
