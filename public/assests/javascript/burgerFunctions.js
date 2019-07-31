@@ -7,7 +7,7 @@ $(function () {
             devoured: 0
         };
 
-        $.ajax("/api/burgers", {
+        $.ajax("/api/burger", {
             type: "POST",
             data: addBurger,
         }).then(function(){
@@ -18,5 +18,17 @@ $(function () {
 
     $(".devour-burger").on("click", function(event){
         event.preventDefault();
-    })
+
+        var id = $(this).data("id");
+        var eaten = {
+            devoured : 1
+        };
+        $.ajax("/api/burger/" + id, {
+            type: "PUT",
+            data: eaten
+        }).then(function(){
+            console.log("Yum, That was Good!!!!");
+            location.reload();
+        });
+    });
 });
