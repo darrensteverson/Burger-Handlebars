@@ -27,7 +27,7 @@ router.use("/api/burger/:id", function (req, res){
 
         burger.update(
             {devoured: req.body.devoured, condition} , function(result){
-            console.log("Burger was Updated")
+            console.log("Burger Updated")
         });
 });
 
